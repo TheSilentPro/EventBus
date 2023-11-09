@@ -98,7 +98,7 @@ class HelperMergedEventListener<T> implements MergedSubscription<T>, EventExecut
                 continue;
             }
 
-            Events.PLUGIN.getServer().getPluginManager().registerEvent(registrationType, this, ent.getValue().getPriority(), this, plugin, false);
+            Events.getPlugin().getServer().getPluginManager().registerEvent(registrationType, this, ent.getValue().getPriority(), this, plugin, false);
         }
     }
 

@@ -81,18 +81,11 @@ class MergedSubscriptionBuilderImpl<T> implements MergedSubscriptionBuilder<T> {
         Objects.requireNonNull(testPoints, "testPoints");
         Objects.requireNonNull(predicate, "predicate");
         for (ExpiryTestStage testPoint : testPoints) {
-            switch (testPoint) {
-                case PRE:
-                    this.preExpiryTests.add(predicate);
-                    break;
-                case POST_FILTER:
-                    this.midExpiryTests.add(predicate);
-                    break;
-                case POST_HANDLE:
-                    this.postExpiryTests.add(predicate);
-                    break;
-                default:
-                    throw new IllegalArgumentException("Unknown ExpiryTestPoint: " + testPoint);
+            switch (testPoint) { // @EventBus enhanced switch statement
+                case PRE -> this.preExpiryTests.add(predicate);
+                case POST_FILTER -> this.midExpiryTests.add(predicate);
+                case POST_HANDLE -> this.postExpiryTests.add(predicate);
+                default -> throw new IllegalArgumentException("Unknown ExpiryTestPoint: " + testPoint);
             }
         }
         return this;

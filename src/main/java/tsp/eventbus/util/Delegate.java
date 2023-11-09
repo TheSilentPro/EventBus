@@ -33,8 +33,7 @@ package tsp.eventbus.util;
 public interface Delegate<T> {
 
     static Object resolve(Object obj) {
-        while (obj instanceof Delegate<?>) {
-            Delegate<?> delegate = (Delegate<?>) obj;
+        while (obj instanceof Delegate<?> delegate) { // @EventBus - Pattern instaceof check
             obj = delegate.getDelegate();
         }
         return obj;

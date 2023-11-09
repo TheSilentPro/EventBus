@@ -40,8 +40,25 @@ import javax.annotation.Nonnull;
  */
 public final class Events {
 
-    // Set this to the plugin before anything else!
-    public static JavaPlugin PLUGIN = null;
+    private static JavaPlugin PLUGIN;
+
+    /**
+     * Initializes EventBus.
+     * Before doing anything, make sure you call this method!
+     *
+     * @param plugin Your plugins instance.
+     */
+    public static void init(JavaPlugin plugin) {
+        PLUGIN = plugin;
+    }
+
+    @Nonnull
+    public static JavaPlugin getPlugin() {
+        if (PLUGIN == null) {
+            throw new NullPointerException("Plugin instance is null!");
+        }
+        return PLUGIN;
+    }
 
     /**
      * Makes a SingleSubscriptionBuilder for a given event

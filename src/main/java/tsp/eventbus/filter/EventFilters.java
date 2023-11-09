@@ -27,7 +27,6 @@ package tsp.eventbus.filter;
 
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.entity.EntityInteractEvent;
 import org.bukkit.event.player.*;
 
 import java.util.function.Predicate;
